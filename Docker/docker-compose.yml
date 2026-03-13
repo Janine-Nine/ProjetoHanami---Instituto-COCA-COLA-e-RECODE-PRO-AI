@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: hanami_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hanami
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    container_name: hanami_backend
+    ports:
+      - "3333:3333"
+    environment:
+      DATABASE_URL: mysql://root:root@mysql:3306/hanami
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projeto Hanami | Análise de Dados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>🌸 Projeto Hanami</h1>
+    <p>API de Análise de Dados • Upload • Relatórios • Insights</p>
+  </header>
+
+  <main>
+
+    <!-- UPLOAD -->
+    <section class="card">
+      <h2>📤 Upload de Arquivo</h2>
+
+      <input type="file" id="fileInput" accept=".csv,.xlsx" />
+      <button onclick="uploadFile()">Enviar Arquivo</button>
+
+      <div id="progressContainer">
+        <div id="progressBar"></div>
+      </div>
+
+      <p id="uploadStatus">Nenhum arquivo enviado.</p>
+    </section>
+
+    <!-- KPIs -->
+    <section class="card">
+      <h2>📈 Indicadores-Chave (KPIs)</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <h3>Total de Registros</h3>
+          <span id="kpiRecords">--</span>
+        </div>
+
+        <div class="kpi">
+          <h3>Faturamento</h3>
+          <span id="kpiRevenue">R$ --</span>
+        </div>
+
+        <div class="kpi">
+          <h3>Clientes Ativos</h3>
+          <span id="kpiCustomers">--</span>
+        </div>
+
+        <div class="kpi">
+          <h3>Ticket Médio</h3>
+          <span id="kpiTicket">R$ --</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTROS -->
+    <section class="card">
+      <h2>🔎 Filtros de Análise</h2>
+
+      <div class="filters">
+        <select id="filterYear">
+          <option>Ano</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+        </select>
+
+        <select id="filterRegion">
+          <option>Região</option>
+          <option>Sul</option>
+          <option>Sudeste</option>
+          <option>Nordeste</option>
+        </select>
+
+        <select id="filterProduct">
+          <option>Produto</option>
+          <option>Produto A</option>
+          <option>Produto B</option>
+        </select>
+
+        <button>Aplicar Filtros</button>
+      </div>
+    </section>
+
+    <!-- RELATÓRIOS -->
+    <section class="card">
+      <h2>📊 Relatórios</h2>
+      <div class="charts-grid">
+        <div class="chart-placeholder">
+          <img src="img/relatorio1.png" alt="Mensais">
+        </div>
+        <div class="chart-placeholder">
+          <img src="img/relatorio2.png" alt="Distribuição">
+        </div>
+         <div class="chart-placeholder">
+          <img src="img/relatorio3.jpeg" alt="Evolução">
+      </div>
+
+      <div class="buttons">
+        <button onclick="getReport('sales-summary')">Vendas</button>
+        <button onclick="getReport('regional-performance')">Regiões</button>
+        <button onclick="getReport('product-analysis')">Produtos</button>
+        <button onclick="getReport('customer-profile')">Clientes</button>
+        <button onclick="getReport('financial-metrics')">Financeiro</button>
+      </div>
+
+      <pre id="reportOutput">Nenhum relatório carregado.</pre>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section class="card">
+      <h2>📉 Visualização Gráfica</h2>
+      <p>Gráficos gerados dinamicamente com base nos dados enviados.</p>
+     
+      <div class="charts-grid">
+        <div class="chart-placeholder">
+          <img src="img/grafico1.jpeg" alt="Vendas">
+        </div>
+        <div class="chart-placeholder">
+          <img src="img/grafico2.jpeg" alt="Normal">
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="card">
+      <h2>🧠 Insights Automáticos</h2>
+
+      <ul id="insightsList">
+        <li>
+          <img src="img/insights.jpeg" alt="insights">
+        </li>
+      </ul>
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section class="card">
+      <h2>🗂️ Histórico de Uploads</h2>
+
+      <ul id="uploadHistory">
+        <li>Sem histórico.</li>
+      </ul>
+    </section>
+
+    <!-- STATUS API -->
+    <section class="card">
+      <h2>⚙️ Status da API</h2>
+
+      <p>
+        Backend: <strong id="apiStatus">Desconectado</strong><br />
+        Última atualização: <span id="lastUpdate">--</span>
+      </p>
+    </section>
+
+    <!-- LOG -->
+    <section class="card">
+      <h2>🧾 Log de Processamento</h2>
+      <pre id="systemLog">Aguardando eventos...</pre>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 • Projeto Hanami • Dados que florescem decisões</p>
+  </footer>
+
+  <script src="assets/script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
